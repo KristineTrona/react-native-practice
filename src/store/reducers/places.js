@@ -1,10 +1,9 @@
-import {ADD_PLACE, DELETE_PLACE, SELECT_PLACE, DESELECT_PLACE} from '../actions/places'
+import {ADD_PLACE, DELETE_PLACE} from '../actions/places'
 
 import placeImage from '../../assets/beautiful-place.jpg'
 
 const initialState = {
-  places: [],
-  selectedPlace: null
+  places: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -14,7 +13,7 @@ const reducer = (state = initialState, action) => {
         ...state, 
         places: state.places.concat(
           {
-            key: Math.random(), 
+            key: `${Math.random()}`,
             name: action.payload, 
             image: placeImage
           }
@@ -26,16 +25,6 @@ const reducer = (state = initialState, action) => {
         places: state.places.filter(place => {
           return place.key !== state.selectedPlace.key
         }),
-        selectedPlace: null
-      }
-    case SELECT_PLACE:
-      return {
-        ...state, 
-        selectedPlace: state.places.find(place => place.key === action.payload)
-      }
-    case DESELECT_PLACE:
-      return {
-        ...state,
         selectedPlace: null
       }
     default:
