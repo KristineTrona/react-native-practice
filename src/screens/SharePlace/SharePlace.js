@@ -12,6 +12,10 @@ import PickLocation from '../../components/PickLocation/PickLocation'
 
 class SharePlaceScreen extends Component {
 
+  static navigatorStyle = {
+    navBarButtonColor: "green"
+  }
+
   state={
     placeName:""
   }
@@ -33,6 +37,7 @@ class SharePlaceScreen extends Component {
 
 
   placeNameChangedHandler = val => {
+
     this.setState({
       placeName: val
     })
