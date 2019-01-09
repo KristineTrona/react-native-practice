@@ -9,7 +9,7 @@ import SideDrawer from './src/screens/SideDrawer/SideDrawer'
 
 import configureStore from './src/store/configureStore'
 
-import startMainTabs from './src/screens/MainTabs/startMainTabs'
+// import startMainTabs from './src/screens/MainTabs/startMainTabs'
 
 const store = configureStore()
 
@@ -20,15 +20,15 @@ Navigation.registerComponent("awesome-places.FindPlacesScreen", () => FindPlaces
 Navigation.registerComponent("awesome-places.PlaceDetailsScreen", () => PlaceDetailsScreen, store, Provider)
 Navigation.registerComponent("awesome-places.SideDrawer", () => SideDrawer)
 
-//Start the App
+// Start the App
 
-// Navigation.startSingleScreenApp({
-//   screen: {
-//     screen: "awesome-places.AuthScreen",
-//     title: "Login"
-//   }
-// })
+Navigation.startSingleScreenApp({
+  screen: {
+    screen: "awesome-places.AuthScreen",
+    title: "Login"
+  }
+})
 
 
-startMainTabs()
+// startMainTabs()
 

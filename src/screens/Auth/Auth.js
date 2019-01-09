@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {View, Button, StyleSheet, ImageBackground} from 'react-native'
+import {View, StyleSheet, ImageBackground, Dimensions} from 'react-native'
 
 import startMainTabs from '../MainTabs/startMainTabs'
 import backgroundImage from '../../assets/background.jpg'
@@ -11,22 +11,65 @@ import ButtonWithBackground from '../../components/UI/ButtonWithBackground'
 
 class AuthScreen extends Component {
 
+  state = {
+    viewMode: Dimensions.get("window").height >600 ? "portrait" : "landscape"
+  }
+
+  constructor(props){
+    super(props)
+    Dimensions.addEventListener("change", (dims) => {
+      this.setState({
+        viewMode: Dimensions.get("window").height > 600 ? "portrait" : "landscape",
+      })
+    })
+  }
+
   loginHandler = () => {
     startMainTabs();
   }
 
   render(){
+
+    let headingText = null
+
+    if(this.state.viewMode === "portrait") {
+      headingText =(
+        <MainText>
+          <HeadingText >Sign Up </HeadingText>
+        </MainText>
+      )
+    }
+
     return (
       <ImageBackground source={backgroundImage} style={styles.backgroundImage}>
-        <View style={styles.container}>  
-          <MainText>
-            <HeadingText >Please Log In </HeadingText>
-          </MainText>
+        <View style={styles.container}> 
+          {headingText} 
           <ButtonWithBackground color="#29aaf4" onPress={() => alert("hello")}>Switch to Login</ButtonWithBackground>
           <View style={styles.inputContainer}>
             <DefaultInput style={styles.input} placeholder="Your E-mail Address"/>
-            <DefaultInput style={styles.input} placeholder="Password"/>
-            <DefaultInput style={styles.input} placeholder="Confirm Password"/>
+            <View 
+              style={
+                this.state.viewMode === "portrait" 
+                  ? styles.portraitPasswordContainer 
+                  : styles.landscapePasswordContainer
+                }>
+              <View 
+                style={
+                  this.state.viewMode === "portrait"
+                    ? styles.portraitPasswordWrapper
+                    : styles.landscapePasswordWrapper
+                }>
+                <DefaultInput style={styles.input} placeholder="Password"/>
+              </View>
+              <View                 
+                style={
+                  this.state.viewMode === "portrait"
+                    ? styles.portraitPasswordWrapper
+                    : styles.landscapePasswordWrapper
+                }>
+                <DefaultInput style={styles.input} placeholder="Confirm Password"/>
+              </View>
+            </View>
           </View>
           <ButtonWithBackground color="#29aaf4" onPress={this.loginHandler}>Submit</ButtonWithBackground>
         </View>
@@ -51,6 +94,20 @@ const styles = StyleSheet.create({
   input: {
     backgroundColor: "#eee",
     borderColor: "#bbb"
+  }, 
+  landscapePasswordContainer:{
+    flexDirection:  "row",
+    justifyContent: "space-between"
+  },
+  portraitPasswordContainer:{
+    flexDirection:  "column",
+    justifyContent: "flex-start"
+  },
+  landscapePasswordWrapper:{
+    width: "49%"
+  },
+  portraitPasswordWrapper:{
+    width: "100%"
   }
 })
 
