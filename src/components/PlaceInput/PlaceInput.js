@@ -7,7 +7,9 @@ const placeInput = (props) => {
     <DefaultInput 
       style={{width: "80%"}} 
       placeholder="Place Name"
-      value={props.placeName}
+      value={props.placeData.value}
+      valid={props.placeData.valid}
+      touched={props.placeData.touched}
       onChangeText={props.onChangeText}
     />
   )
