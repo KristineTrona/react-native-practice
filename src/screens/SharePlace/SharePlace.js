@@ -9,6 +9,7 @@ import HeadingText from '../../components/UI/HeadingText'
 import PlaceInput from '../../components/PlaceInput/PlaceInput'
 import PickImage from '../../components/PickImage/PickImage'
 import PickLocation from '../../components/PickLocation/PickLocation'
+import validate from '../../utility/validation'
 
 class SharePlaceScreen extends Component {
 
@@ -17,7 +18,16 @@ class SharePlaceScreen extends Component {
   }
 
   state={
-    placeName:""
+    controls:{
+      placeName:{
+        value:"",
+        valid: false,
+        touched: false,
+        validationRules:{
+          notEmpty: true
+        }
+      }
+    }
   }
 
   constructor(props){
@@ -37,15 +47,24 @@ class SharePlaceScreen extends Component {
 
 
   placeNameChangedHandler = val => {
-
-    this.setState({
-      placeName: val
+    this.setState(prevState => {
+      return {
+        controls: {
+          ...prevState.controls,
+          placeName: {
+            ...prevState.controls.placeName,
+            value: val,
+            valid: validate(val, prevState.controls.placeName.validationRules),
+            touched: true
+          }
+        }
+      }
     })
   }
 
   placeAddedHandler = () => {
-    if(this.state.placeName.trim() !== ""){
-      this.props.onAddPlace(this.state.placeName)
+    if(this.state.controls.placeName.value.trim() !== ""){
+      this.props.onAddPlace(this.state.controls.placeName.value)
     }
   }
 
@@ -61,11 +80,15 @@ class SharePlaceScreen extends Component {
           <PickImage/>
           <PickLocation/>
           <PlaceInput
-            placeName={this.state.placeName}
+            placeData={this.state.controls.placeName}
             onChangeText={this.placeNameChangedHandler}
           />
           <View style={styles.button}>
-            <Button title="Share the Place!" onPress={this.placeAddedHandler}/>
+            <Button 
+              title="Share the Place!" 
+              onPress={this.placeAddedHandler} 
+              disabled={!this.state.controls.placeName.valid}
+            />
           </View>
         </View>
       </ScrollView>
