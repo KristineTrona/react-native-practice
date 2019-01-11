@@ -1,5 +1,5 @@
 import React, {Component} from  'react'
-import {View, Image, Button, StyleSheet} from 'react-native'
+import {View, Image, Text, Button, StyleSheet} from 'react-native'
 import ImagePicker from 'react-native-image-picker'
 
 export default class PickImage extends Component {
@@ -20,6 +20,7 @@ export default class PickImage extends Component {
             uri: res.uri
           }
         })
+        this.props.onImagePicked({uri: res.uri, base64: res.data})
       }
     })
   }
@@ -28,7 +29,9 @@ export default class PickImage extends Component {
     return(
       <View style={styles.container}>
         <View style={styles.placeholder}>
-          <Image source={this.state.pickedImage} style={styles.previewImage}/>
+          {this.state.pickedImage 
+          ? <Image source={this.state.pickedImage} style={styles.previewImage}/> 
+          : <Text> (Preview Image)</Text> }
         </View>
         <View style={styles.button}>
           <Button title="Pick Image" onPress={this.pickImageHandler}/>
@@ -48,7 +51,9 @@ const styles = StyleSheet.create({
     borderColor: "black",
     backgroundColor: "#eee",
     width: "80%",
-    height: 140
+    height: 140,
+    alignItems: "center", 
+    justifyContent: "center"
   },
   button: {
     margin: 8

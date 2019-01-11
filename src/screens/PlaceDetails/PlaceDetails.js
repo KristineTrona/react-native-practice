@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { View, Image, Text, StyleSheet, TouchableOpacity, Platform, Dimensions} from 'react-native'
+import { View, Text, Image, StyleSheet, TouchableOpacity, Platform, Dimensions} from 'react-native'
 import MapView from 'react-native-maps'
 
 import Icon from 'react-native-vector-icons/Ionicons'

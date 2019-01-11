@@ -12,21 +12,21 @@ const startTabs = () => {
   ]).then(sources => {
     Navigation.startTabBasedApp({
       tabs:[
-        // {
-        //   screen: "awesome-places.FindPlacesScreen",
-        //   label: "Find Place",
-        //   title: "Find Place",
-        //   icon: sources[0],
-        //   navigatorButtons: {
-        //     leftButtons: [
-        //       {
-        //         icon: sources[2],
-        //         title: "Menu",
-        //         id: "sideDrawerToggle"
-        //       }
-        //     ]
-        //   }
-        // },
+        {
+          screen: "awesome-places.FindPlacesScreen",
+          label: "Find Place",
+          title: "Find Place",
+          icon: sources[0],
+          navigatorButtons: {
+            leftButtons: [
+              {
+                icon: sources[2],
+                title: "Menu",
+                id: "sideDrawerToggle"
+              }
+            ]
+          }
+        },
         {
           screen: "awesome-places.SharePlacesScreen",
           label: "Share Place",

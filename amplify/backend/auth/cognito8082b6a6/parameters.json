@@ -1,0 +1,56 @@
+{
+    "identityPoolName": "testproject_identitypool_907d2476",
+    "allowUnauthenticatedIdentities": true,
+    "thirdPartyAuth": false,
+    "lambdaLogPolicy": "testproject_lambda_log_policy",
+    "openIdLambdaRoleName": "testproject_openid_lambda_role",
+    "openIdRolePolicy": "testproject_openid_pass_role_policy",
+    "openIdLambdaIAMPolicy": "testproject_openid_lambda_iam_policy",
+    "openIdLogPolicy": "testproject_openid_lambda_log_policy",
+    "userPoolName": "testproject_userpool_907d2476",
+    "autoVerifiedAttributes": [
+        "email"
+    ],
+    "mfaConfiguration": "OFF",
+    "mfaTypes": [
+        "SMS Text Message"
+    ],
+    "roleName": "testproject_sns-role",
+    "roleExternalId": "testproject_role_external_id",
+    "policyName": "testproject-sns-policy",
+    "smsAuthenticationMessage": "Your authentication code is {####}",
+    "smsVerificationMessage": "Your verification code is {####}",
+    "emailVerificationSubject": "Your verification code",
+    "emailVerificationMessage": "Your verification code is {####}",
+    "defaultPasswordPolicy": false,
+    "passwordPolicyMinLength": 8,
+    "passwordPolicyCharacters": [
+        "Requires Lowercase",
+        "Requires Uppercase",
+        "Requires Numbers",
+        "Requires Symbols"
+    ],
+    "requiredAttributes": [
+        "email"
+    ],
+    "userpoolClientName": "testproject_app_client",
+    "userpoolClientGenerateSecret": true,
+    "userpoolClientRefreshTokenValidity": 30,
+    "userpoolClientReadAttributes": [
+        "email"
+    ],
+    "mfaLambdaRole": "testproject_totp_lambda_role",
+    "mfaLambdaLogPolicy": "testproject_totp_lambda_log_policy",
+    "mfaPassRolePolicy": "testproject_totp_pass_role_policy",
+    "mfaLambdaIAMPolicy": "testproject_totp_lambda_iam_policy",
+    "userpoolClientLambdaRole": "testproject_userpoolclient_lambda_role",
+    "userpoolClientLogPolicy": "testproject_userpoolclient_lambda_log_policy",
+    "userpoolClientLambdaPolicy": "testproject_userpoolclient_lambda_iam_policy",
+    "userpoolClientSetAttributes": false,
+    "authSelections": "identityPoolAndUserPool",
+    "resourceName": "cognito8082b6a6",
+    "unAuthRoleName": "testproject-20190110170730-unauthRole",
+    "authRoleName": "testproject-20190110170730-authRole",
+    "unAuthRoleArn": "arn:aws:iam::943226694132:role/testproject-20190110170730-unauthRole",
+    "authRoleArn": "arn:aws:iam::943226694132:role/testproject-20190110170730-authRole"
+}

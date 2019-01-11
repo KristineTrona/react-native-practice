@@ -1,0 +1,59 @@
+{
+	"providers": {
+		"awscloudformation": {
+			"AuthRoleName": "testproject-20190110170730-authRole",
+			"UnauthRoleArn": "arn:aws:iam::943226694132:role/testproject-20190110170730-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::943226694132:role/testproject-20190110170730-authRole",
+			"Region": "eu-west-1",
+			"DeploymentBucketName": "testproject-20190110170730-deployment",
+			"UnauthRoleName": "testproject-20190110170730-unauthRole",
+			"StackName": "testproject-20190110170730",
+			"StackId": "arn:aws:cloudformation:eu-west-1:943226694132:stack/testproject-20190110170730/d51fb690-14f1-11e9-8c39-02f48c625dae"
+		}
+	},
+	"storage": {
+		"dynamoe1097bd5": {
+			"service": "DynamoDB",
+			"providerPlugin": "awscloudformation"
+		}
+	},
+	"function": {
+		"testproject83f8bffb": {
+			"service": "Lambda",
+			"providerPlugin": "awscloudformation",
+			"build": true,
+			"dependsOn": [
+				{
+					"category": "storage",
+					"resourceName": "dynamoe1097bd5",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
+		}
+	},
+	"auth": {
+		"cognito8082b6a6": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation"
+		}
+	},
+	"api": {
+		"testProjectAPI": {
+			"service": "API Gateway",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "function",
+					"resourceName": "testproject83f8bffb",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
+		}
+	}
+}

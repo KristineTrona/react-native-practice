@@ -9,8 +9,6 @@ import SideDrawer from './src/screens/SideDrawer/SideDrawer'
 
 import configureStore from './src/store/configureStore'
 
-import startMainTabs from './src/screens/MainTabs/startMainTabs'
-
 const store = configureStore()
 
 //Register Screens
@@ -22,13 +20,15 @@ Navigation.registerComponent("awesome-places.SideDrawer", () => SideDrawer)
 
 // Start the App
 
-// Navigation.startSingleScreenApp({
-//   screen: {
-//     screen: "awesome-places.AuthScreen",
-//     title: "Login"
-//   }
-// })
+Navigation.startSingleScreenApp({
+  screen: {
+    screen: "awesome-places.AuthScreen",
+    title: "Login"
+  }
+})
 
+//For development purposes only: 
 
-startMainTabs()
+// import startMainTabs from './src/screens/MainTabs/startMainTabs'
+// startMainTabs()
 
