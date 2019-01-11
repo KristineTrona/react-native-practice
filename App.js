@@ -9,8 +9,6 @@ import SideDrawer from './src/screens/SideDrawer/SideDrawer'
 
 import configureStore from './src/store/configureStore'
 
-// import startMainTabs from './src/screens/MainTabs/startMainTabs'
-
 const store = configureStore()
 
 //Register Screens
@@ -29,6 +27,8 @@ Navigation.startSingleScreenApp({
   }
 })
 
+//For development purposes only: 
 
+// import startMainTabs from './src/screens/MainTabs/startMainTabs'
 // startMainTabs()
 

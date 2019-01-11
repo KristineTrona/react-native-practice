@@ -2,7 +2,7 @@ import {ADD_PLACE, DELETE_PLACE} from '../actions/places'
 
 import placeImage from '../../assets/beautiful-place.jpg'
 
-const initialState = {
+let initialState = {
   places: []
 }
 
@@ -14,8 +14,9 @@ const reducer = (state = initialState, action) => {
         places: state.places.concat(
           {
             key: `${Math.random()}`,
-            name: action.payload, 
-            image: placeImage
+            name: action.payload.placeName, 
+            image: action.payload.image,
+            location: action.payload.location
           }
         )
       }

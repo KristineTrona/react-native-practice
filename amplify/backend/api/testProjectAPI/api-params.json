@@ -1,0 +1,36 @@
+{
+    "paths": [
+        {
+            "name": "/places",
+            "lambdaFunction": "testproject83f8bffb",
+            "privacy": {
+                "protected": true,
+                "auth": "rw",
+                "unauth": "r"
+            }
+        }
+    ],
+    "resourceName": "testProjectAPI",
+    "apiName": "testproject2b5baf78",
+    "functionArns": [
+        {
+            "lambdaFunction": "testproject83f8bffb"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 1,
+        "authRoleName": "testproject-20190110170730-authRole",
+        "unAuthRoleName": "testproject-20190110170730-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "testproject83f8bffb",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

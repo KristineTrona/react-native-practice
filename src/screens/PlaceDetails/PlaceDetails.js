@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
-import { View, Image, Text, StyleSheet, TouchableOpacity, Platform, Dimensions} from 'react-native'
+import { View, Text, Image, StyleSheet, TouchableOpacity, Platform, Dimensions} from 'react-native'
+import MapView from 'react-native-maps'
 
 import Icon from 'react-native-vector-icons/Ionicons'
 import { connect } from 'react-redux'
@@ -44,6 +45,17 @@ class PlaceDetails extends Component {
           <Image source={this.props.selectedPlace.image} style={styles.placeImage} />
         </View>
         <View style={styles.subContainer}>
+          <MapView 
+            initialRegion={{
+            ...this.props.selectedPlace.location,
+            latitudeDelta: 0.02,
+            longitudeDelta: Dimensions.get("window").width / Dimensions.get("window").height * 0.02
+            }}
+            style={styles.map}>
+            <MapView.Marker coordinate={this.props.selectedPlace.location}/>
+          </MapView>
+        </View>
+        <View style={styles.subContainer}>
           <View>
             <Text style={styles.placeName}>{this.props.selectedPlace.name}</Text>
           </View>
@@ -73,7 +85,7 @@ const styles = StyleSheet.create({
   },
   placeImage:{
     width: "100%",
-    height: 200,
+    height: 200
   },
   placeName:{
     fontWeight: "bold",
@@ -85,6 +97,9 @@ const styles = StyleSheet.create({
   },
   subContainer: {
     flex: 1
+  },
+  map: {
+    ...StyleSheet.absoluteFillObject
   }
 })
 
